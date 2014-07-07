@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>EmberSocketsExample</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/ember-sockets-example.css">
+  </head>
+  <body>
+    <script>
+      window.EmberSocketsExampleENV = {{ENV}};
+      window.EmberENV = window.EmberSocketsExampleENV.EmberENV;
+    </script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/ember-sockets-example.js"></script>
+    <script>
+      window.EmberSocketsExample = require('ember-sockets-example/app')['default'].create(EmberSocketsExampleENV.APP);
+    </script>
+  </body>
+</html>
