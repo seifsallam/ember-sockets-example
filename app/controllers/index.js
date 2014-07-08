@@ -1,16 +1,29 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  name: '',
+
+  age: 0,
+
   actions: {
     cherryPickName: function() {
+      console.log('cherryPickName');
       this.socket.emit('cherryPickName');
-    }
+    },
   },
 
   sockets: {
-    cherryPickedName: function(name, age) {
-      this.set('name', name);
-      this.set('age', age);
+    cherryPickedName: ['name', 'age'],
+
+    //// OR
+    // cherryPickedName: function(name, age) {
+    //   console.log('cherryPickedName', name, age);
+    //   this.set('name', name);
+    //   this.set('age', age);
+    // },
+
+    public: function(value) {
+      console.log('public', value);
     },
 
     connect: function() {
@@ -21,7 +34,4 @@ export default Ember.Controller.extend({
       console.log('EmberSockets has disconnected...');
     }
   },
-  name: 'Adam',
-
-  age: 16
 });

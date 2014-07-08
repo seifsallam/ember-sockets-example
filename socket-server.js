@@ -1,17 +1,10 @@
-var io = require('socket.io').listen(8888);
+var io = require('socket.io')(8888);
 
-console.log('foo');
-
-/**
- * @on connection
- */
-io.sockets.on('connection', function (socket) {
+io.on('connection', function(socket) {
   console.log('connection');
 
-  /**
-   * @on cherryPickName
-   * Updates the content when the `applyFilterByWord` event has been received.
-   */
+  io.emit('public', { will: 'be received by everyone'});
+
   socket.on('cherryPickName', function(name, age) {
     var names = ['Adam', 'Masha', 'Baki', 'Vaidas', 'Dhruv', 'Gabriele', 'Javier',
                  'Noemi', 'Dmitri', 'Simon', 'Artem', 'Raj', 'Mark', 'Mide'];
